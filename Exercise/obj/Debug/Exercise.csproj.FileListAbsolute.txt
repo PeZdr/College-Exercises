@@ -1,0 +1,7 @@
+C:\Users\Pedri\OneDrive\Área de Trabalho\Cotmig\PC\Atividade Avalitava 3\Exercise\Exercise\bin\Debug\Exercise.exe.config
+C:\Users\Pedri\OneDrive\Área de Trabalho\Cotmig\PC\Atividade Avalitava 3\Exercise\Exercise\bin\Debug\Exercise.exe
+C:\Users\Pedri\OneDrive\Área de Trabalho\Cotmig\PC\Atividade Avalitava 3\Exercise\Exercise\bin\Debug\Exercise.pdb
+C:\Users\Pedri\OneDrive\Área de Trabalho\Cotmig\PC\Atividade Avalitava 3\Exercise\Exercise\obj\Debug\Exercise.csproj.AssemblyReference.cache
+C:\Users\Pedri\OneDrive\Área de Trabalho\Cotmig\PC\Atividade Avalitava 3\Exercise\Exercise\obj\Debug\Exercise.csproj.CoreCompileInputs.cache
+C:\Users\Pedri\OneDrive\Área de Trabalho\Cotmig\PC\Atividade Avalitava 3\Exercise\Exercise\obj\Debug\Exercise.exe
+C:\Users\Pedri\OneDrive\Área de Trabalho\Cotmig\PC\Atividade Avalitava 3\Exercise\Exercise\obj\Debug\Exercise.pdb
