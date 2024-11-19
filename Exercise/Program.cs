@@ -272,6 +272,12 @@ namespace Exercise
                     case 2:
                         RemoveUser(Users);
                         break;
+                    case 3:
+                        ReplaceUser(Users);
+                        break;
+                    case 4:
+                        ClearList(Users);
+                        break;
                     case 5:
                         PrintList(Users);
                         Console.ReadKey();
@@ -378,7 +384,7 @@ namespace Exercise
             return answer;
         }
 
-       
+
         //-----------------------------------------------
 
         //Procedures
@@ -475,6 +481,46 @@ namespace Exercise
                 }
 
             }
+        }
+        static void ReplaceUser(List<string> list)
+        {
+            string end = "-1";
+            while (end != "0")
+            {
+                Console.Write("What object of the list do you want to replace(0 = exit):");
+                string answer = Console.ReadLine();
+                Console.Clear();
+                if (list.Contains(answer)) 
+                {
+                    int index = list.IndexOf(answer);
+                    Console.Write("Type what you want to replace it for: ");
+                    list[index] = Console.ReadLine();
+                    Console.Clear();
+                }
+                else if (answer == "0")
+                {
+                    end = "0";
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("This element doesn't exist!");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+            }
+        }
+        static void ClearList(List<string> list)
+        {
+            Console.Clear();
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+                list.RemoveAt(i);
+            }
+            Console.WriteLine("List cleaned!");
+            Console.ReadKey();
+            Console.Clear();
+
         }
     }
     
