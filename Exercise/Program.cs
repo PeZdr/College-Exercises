@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,6 +57,12 @@ namespace Exercise
                             break;
                         case 4:
                             Question4();
+                            break;
+                        case 5:
+                            Question5();
+                            break;
+                        case 6:
+                            Question6();
                             break;
                         default:
                             Console.Clear();
@@ -224,7 +232,66 @@ namespace Exercise
             Console.ReadKey();
             Console.Clear();
         }
+        static void Question5()
+        {
+            List<string> listColor = new List<string>();
+            listColor.Add("Branco");
+            listColor.Add("Vermelho");
+            listColor.Add("Amarelo");
+            listColor.Add("Azul");
+            listColor.Add("Rosa");
+
+            PrintList(listColor);
+            Console.ReadKey();
+            Console.WriteLine();
+            for (int i = 0; i < 3; i++)
+            {
+                string firstItem = listColor[0];
+                listColor.RemoveAt(0);
+                listColor.Add(firstItem);
+            }
+
+            PrintList(listColor);
+            
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        static void Question6()
+        {
+            List<string> Users = new List<string>();
+            int option = -1;
+            while(option != 0)
+            {
+                option = MenuFunctionList();
+                switch (option)
+                {
+                    case 1:
+                        AddUser(Users);
+                        break;
+                    case 2:
+                        RemoveUser(Users);
+                        break;
+                    case 3:
+                        ReplaceUser(Users);
+                        break;
+                    case 4:
+                        ClearList(Users);
+                        break;
+                    case 5:
+                        PrintList(Users);
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
+            }
+            
+           
+            
+            
+        }
         //Functions
+        //-----------------------------------------------
         static int[] FillArrayInt10()
         {
             int[] array = new int[10];
@@ -299,8 +366,29 @@ namespace Exercise
             }
             return sum;
         }
+        static int MenuFunctionList()
+        {
+            int answer = -1;
+            while (answer < 0 || answer > 5)
+            {
+                Console.WriteLine("1 - Add user");
+                Console.WriteLine("2 - Remove user");
+                Console.WriteLine("3 - Replace user");
+                Console.WriteLine("4 - Clear the list");
+                Console.WriteLine("5 - Show the list");
+
+                Console.Write("Select an option: ");
+                answer = int.Parse(Console.ReadLine());
+                Console.Clear();
+            }
+            return answer;
+        }
+
+
+        //-----------------------------------------------
 
         //Procedures
+        //-----------------------------------------------
         static void PrintArray(int[]array)
         {
             for (int i = 0; i < array.Length; i++)
@@ -326,5 +414,114 @@ namespace Exercise
                 Console.WriteLine();
             }
         }
+       
+        static void PrintList(List<string> list)
+        {
+            foreach (string e in list)
+            {
+                Console.WriteLine(e);
+            }
+        }
+        static void AddUser(List<string> list)
+        {
+            string user = "";
+            bool end = false;
+            while (end != true)
+            {
+                Console.Write("Type an user to add to the list (0 = exit): ");
+                user = Console.ReadLine();
+
+                if (user == "0")
+                {
+                    end = true;
+                    Console.Clear();
+                    break;
+                }
+                else
+                {
+                    if (list.Contains(user))
+                    {
+                        Console.WriteLine("This user already exists!");
+                        Console.ReadKey();
+                        Console.Clear();
+                    }
+                    else
+                    {
+                        list.Add(user);
+                        Console.Clear();
+                    }
+                }
+
+            }
+
+        }
+        static void RemoveUser(List<string> list)
+        {
+            string end = "-1";
+            while (end != "0")
+            {
+                string user = "";
+                Console.Write("Type an user to remove from the list (0 = exit): ");
+                user = Console.ReadLine();
+                if (list.Contains(user))
+                {
+                    list.Remove(user);
+                    Console.Clear();
+                }
+                else if(user == "0")
+                {
+                    Console.Clear();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("This user does not exist");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+
+            }
+        }
+        static void ReplaceUser(List<string> list)
+        {
+            string end = "-1";
+            while (end != "0")
+            {
+                Console.Write("What object of the list do you want to replace(0 = exit):");
+                string answer = Console.ReadLine();
+                Console.Clear();
+                if (list.Contains(answer)) 
+                {
+                    int index = list.IndexOf(answer);
+                    Console.Write("Type what you want to replace it for: ");
+                    list[index] = Console.ReadLine();
+                    Console.Clear();
+                }
+                else if (answer == "0")
+                {
+                    end = "0";
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("This element doesn't exist!");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+            }
+        }
+        static void ClearList(List<string> list)
+        {
+            Console.Clear();
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+                list.RemoveAt(i);
+            }
+            Console.WriteLine("List cleaned!");
+            Console.ReadKey();
+            Console.Clear();
+
+        }
     }
+    
 }
