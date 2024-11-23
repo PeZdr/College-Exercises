@@ -64,6 +64,18 @@ namespace Exercise
                         case 6:
                             Question6();
                             break;
+                        case 7:
+                            Question7();
+                            break;
+                        case 8:
+                            Question8();
+                            break;
+                        case 9:
+                            Question9();
+                            break;
+                        case 10:
+                            Question10();
+                            break;
                         default:
                             Console.Clear();
                             break;
@@ -290,8 +302,155 @@ namespace Exercise
             
             
         }
+        static void Question7()
+        {
+            Stack<string> plates = new Stack<string>();
+            plates.Push("Plate1");
+            plates.Push("Plate2");
+            plates.Push("Plate3");
+            plates.Push("Plate4");
+            plates.Push("Plate5");
+
+            plates.Pop();
+            plates.Pop();
+
+            plates.Push("Plate6");
+
+            foreach (string e in plates)
+            {
+                Console.Write($"{e}\t");
+            }
+            Console.ReadKey();
+            Console.Clear();
+        }
+        static void Question8()
+        {
+            Stack<int> Pa = new Stack<int>();
+            Stack<int> Pb = new Stack<int>();
+            Stack<int> Pc = new Stack<int>();
+
+            Pa.Push(3);
+            Pa.Push(2);
+            Pa.Push(1);
+
+            Console.Write("Pa: ");
+            foreach (int e in Pa)
+            {
+                Console.Write($"{e}  ");
+            }
+            Console.Write("\n");
+
+            Pc.Push(Pa.Pop());
+            Pc.Push(Pa.Pop());
+            Pc.Push(Pa.Pop());
+
+            Console.Write("Pc: ");
+            foreach (int e in Pc)
+            {
+                Console.Write($"{e}  ");
+            }
+            Console.Write("\n");
+
+            Pb.Push(Pc.Pop());
+            Pb.Push(Pc.Pop());
+            Pb.Push(Pc.Pop());
+
+            Console.Write("Pb: ");
+            foreach (int e in Pb)
+            {
+                Console.Write($"{e}  ");
+            }
+
+            Console.ReadKey();
+            Console.Clear();
+        }
+        static void Question9()
+        {
+            Queue<string> queue = new Queue<string>();
+
+            queue.Enqueue("Person1");
+            queue.Enqueue("Person2");
+            queue.Enqueue("Person3");
+            queue.Enqueue("Person4");
+            queue.Enqueue("Person5");
+
+            queue.Dequeue();
+            queue.Dequeue();
+
+            foreach (string p in queue)
+            {
+                Console.Write($"{p}  ");
+            }
+            Console.ReadKey();
+            Console.Clear();
+
+        }
+        static void Question10() 
+        {
+            Queue<int> queue1 = new Queue<int>();
+            Queue<int> queue2 = new Queue<int>();
+            bool end = false;
+
+            queue1.Enqueue(1);
+            queue1.Enqueue(2);
+            queue1.Enqueue(3);
+            queue1.Enqueue(4);
+
+            queue2.Enqueue(5);
+            queue2.Enqueue(6);
+            queue2.Enqueue(7);
+            queue2.Enqueue(8);
+
+            while (true)
+            {
+                char answer = '@';
+                while(answer != 'Y' && answer != 'N')
+                {
+                    Console.Write("Want to switch both queues values?(Y/N): ");
+                    answer = Convert.ToChar(Console.ReadLine());
+                    Console.Clear();
+                }
+
+                if (answer == 'Y')
+                {
+                    
+                    queue1.Enqueue(queue2.Dequeue());
+                    queue1.Enqueue(queue2.Dequeue());
+                    queue1.Enqueue(queue2.Dequeue());
+                    queue1.Enqueue(queue2.Dequeue());
+
+                    queue2.Enqueue(queue1.Dequeue());
+                    queue2.Enqueue(queue1.Dequeue());
+                    queue2.Enqueue(queue1.Dequeue());
+                    queue2.Enqueue(queue1.Dequeue());
+
+                    Console.Write("Queue1(changed): ");
+                    foreach (int e in queue1)
+                    {
+                        Console.Write($"{e}  ");
+                    }
+
+                    Console.Write("\nQueue2(changed): ");
+                    foreach (int e in queue2)
+                    {
+                        Console.Write($"{e}  ");
+                    }
+
+                    Console.ReadKey();
+                    Console.Clear();
+                    break;
+                }
+                else
+                {
+                    Console.Clear();
+                    break;
+                }
+
+            }
+        }
         //Functions
         //-----------------------------------------------
+        
         static int[] FillArrayInt10()
         {
             int[] array = new int[10];
